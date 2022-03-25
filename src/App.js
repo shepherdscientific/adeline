@@ -77,36 +77,40 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
   artworks.map( (art,index) => {
     art.url=pexel(art.filename)
     switch (true){
-      case (index==0):
+      case (index==0):  // center
         art.rotation=[0, 0, 0]
         art.position=[0, 0, 1.5]
         break;
-      case (index<=2): 
+      case (index<=2):  // rear
         art.rotation=[0, 0, 0]
         art.position=((index%2) ? [-0.8, 0, -0.6]:[0.8, 0, -0.6]);
         break;
-      default:
-        if (index % 2){
+      default:        
+        if (index % 2){ // left
           art.rotation=[0, Math.PI / 2.5, 0]
           const multiplier = (((index+1)/2 % 2) ? 0.0375 : .1);
-          art.position=[-1.75+(index-2)*multiplier, 0, 0.25]
-        }else{
+          // console.log(index-3,multiplier,(index-3)*multiplier)
+          art.position=[-1.75+(index-3)*multiplier, 0, 0.25]
+        }else{          // right 
           art.rotation=[0, -Math.PI / 2.5, 0]
           const multiplier = (((index)/2 % 2) ? 0.0375 : .1);
-          art.position=[1.75+(index-2)*multiplier, 0, 0.25]
+          // console.log(index-3,multiplier,(index-3)*multiplier)
+          art.position=[1.75+(index-3)*multiplier, 0, 0.25]
         }
         break;
       }
   })
+  const desckeys = [ "name",  "nationality",  "title",  "year",  "medium",  "size" ]
   const artprops = artworks.map( (art) => (
     {
         position:art.position,
         rotation:art.rotation,
-        url:art.url
+        url:art.url,
+        desc:art.name+art.nationality
       
     }) )
   
-  console.debug(artprops)
+  // console.debug(artprops)
 
 
   return (
@@ -133,7 +137,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, 0.9 * (hovered ? 0.905 : 1), 0.1)
     frame.current.material.color.lerp(c.set(hovered ? 'orange' : 'white').convertSRGBToLinear(), 0.1)
   })
-  
+  console.log(props.desc)
   return (
     <group {...props}>
       <mesh
