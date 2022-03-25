@@ -8,11 +8,11 @@ import getUuid from 'uuid-by-string'
 const GOLDENRATIO = 1.61803398875
 
 export default function App({ images }) {
-  
+  const [artworks,setArtworks] = useState([])
   useEffect(() => {
     const getArtworks = async () => {
       const artworksFromServer = await fetchArtworks()
-      // setArtworks(artworksFromServer)
+      setArtworks(artworksFromServer)
     }
 
     getArtworks()
@@ -22,7 +22,6 @@ export default function App({ images }) {
   const fetchArtworks = async () => {
     const res = await fetch('http://localhost:5000/artworks')
     const data = await res.json()
-    console.log(data)
     return data
   }
 
@@ -32,7 +31,7 @@ export default function App({ images }) {
       <fog attach="fog" args={['#191920', 0, 15]} />
       <Environment preset="city" />
       <group position={[0, -0.5, 0]}>
-        <Frames images={images} />
+        <Frames images={images} artworks={artworks} />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
@@ -53,7 +52,7 @@ export default function App({ images }) {
   )
 }
 
-function Frames({ images, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
+function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
   const ref = useRef()
   const clicked = useRef()
   const [, params] = useRoute('/item/:id')
@@ -73,6 +72,9 @@ function Frames({ images, q = new THREE.Quaternion(), p = new THREE.Vector3() })
     state.camera.position.lerp(p, 0.025)
     state.camera.quaternion.slerp(q, 0.025)
   })
+  const pexel = (filename) => `http://localhost:5000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
+  artworks.map( art => console.log(pexel(art.filename)))
+  
   return (
     <group
       ref={ref}

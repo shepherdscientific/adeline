@@ -18,7 +18,7 @@ const images = [
   { position: [1.75, 0, 0.25], rotation: [0, -Math.PI / 2.5, 0], url: pexel('harvest') },
   { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: pexel('lagos') },
   { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: pexel('nature') },
-  { position: [1.75, 0, 4], rotation: [0, -Math.PI / 2.5, 0], url: pexel('violinbabe2') }
+  { position: [1.75, 0, 4], rotation: [0, -Math.PI / 2.5, 0], url: pexel('legend') }
 ]
 
 createRoot(document.getElementById('root')).render(
