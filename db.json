@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },  
+  "artworks": [
+    {
+      "id": 1,
+      "name": "Idowu Sonanya",
+      "nationality":"Nigerian, Born 1970",
+      "title": "ELEKO BEACH",
+      "year": "2021",
+      "medium":"Acrylic on Canvas",
+      "size": "48\"x24\"",
+      "filename":"eleko",
+      "artist_id_fk": 1
+    },
+    {
+      "id": 2,
+      "name": "Idowu Sonanya",
+      "nationality":"Nigerian, Born 1970",
+      "title": "LEGEND ( PROF G. GRILLO )",
+      "year": "2018",
+      "medium":"Metal",
+      "size": "36\"x24\"",
+      "filename":"legend",
+      "artist_id_fk": 1    }
+  ]  
+}
