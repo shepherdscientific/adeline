@@ -109,7 +109,7 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
         position:art.position,
         rotation:art.rotation,
         url:art.url,
-        desc:Object.values(art.desc).join(' ')
+        desc:Object.values(art.desc).join('\n')
       
     }) )
   
@@ -156,7 +156,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
         </mesh>
         <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={url} />
       </mesh>
-      <Text maxWidth={0.1} anchorX="left" anchorY="top" position={[0.55, GOLDENRATIO, 0]} fontSize={0.025}>
+      <Text maxWidth={0.25} anchorX="left" anchorY="top" position={[0.55, GOLDENRATIO, 0]} fontSize={0.025}>
         { desc }
       </Text>
     </group>
