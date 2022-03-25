@@ -93,14 +93,12 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
       default:        
         if (index % 2){ // left
           art.rotation=[0, Math.PI / 2.5, 0]
-          const multiplier = (((index+1)/2 % 2) ? 0.0375 : .1);
-          // console.log(index-3,multiplier,(index-3)*multiplier)
-          art.position=[-1.75+(index-3)*multiplier, 0, 0.25]
+          const multiplier = (((index+1)/2 % 2) ? 0.2 : 0.075 );
+          art.position=[-1.75-(index-3)*multiplier, 0, 0.25+0.625*(index-3)]
         }else{          // right 
           art.rotation=[0, -Math.PI / 2.5, 0]
-          const multiplier = (((index)/2 % 2) ? 0.0375 : .1);
-          // console.log(index-3,multiplier,(index-3)*multiplier)
-          art.position=[1.75+(index-3)*multiplier, 0, 0.25]
+          const multiplier = (((index)/2 % 2) ? 0.2 : 0.075);
+          art.position=[1.75+(index-4)*multiplier, 0, 0.25+0.625*(index-4)]
         }
         break;
       }

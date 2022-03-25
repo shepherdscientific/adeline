@@ -87,6 +87,26 @@
       "medium":"Oil on Canvas",
       "size": "36\"x36\"",
       "filename":"asoebi",
-      "artist_id_fk": 3    }      
+      "artist_id_fk": 3    },
+    {
+      "id": 7,
+      "name": "Sylvester Abiogun",
+      "nationality":"Nigerian, Born 1972",
+      "title": "WHEN THE MARKETS REOPENED",
+      "year": "2020",
+      "medium":"Oil on Canvas",
+      "size": "20\"24\"",
+      "filename":"markets",
+      "artist_id_fk": 3    },
+    {
+      "id": 8,
+      "name": "Lekii Adebisin",
+      "nationality":"Nigerian, Born 1964",
+      "title": "MESSAGE FROM HEAVEN",
+      "year": "2020",
+      "medium":"Acrylic on Canvas",
+      "size": "30\"x21\"",
+      "filename":"msgheaven",
+      "artist_id_fk": 4    }    
   ]  
 }
