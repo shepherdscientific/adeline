@@ -8,6 +8,24 @@ import getUuid from 'uuid-by-string'
 const GOLDENRATIO = 1.61803398875
 
 export default function App({ images }) {
+  
+  useEffect(() => {
+    const getArtworks = async () => {
+      const artworksFromServer = await fetchArtworks()
+      // setArtworks(artworksFromServer)
+    }
+
+    getArtworks()
+  }, [])
+
+  // Fetch Tasks
+  const fetchArtworks = async () => {
+    const res = await fetch('http://localhost:5000/artworks')
+    const data = await res.json()
+    console.log(data)
+    return data
+  }
+
   return (
     <Canvas gl={{ alpha: false }} dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
       <color attach="background" args={['#191920']} />
