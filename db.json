@@ -18,7 +18,7 @@
   },  
   "artworks": [
     {
-      "id": 1,
+      "id": 0,
       "name": "Idowu Sonanya",
       "nationality":"Nigerian, Born 1970",
       "title": "ELEKO BEACH",
@@ -26,10 +26,10 @@
       "medium":"Acrylic on Canvas",
       "size": "48\"x24\"",
       "filename":"eleko",
-      "artist_id_fk": 1
+      "artist_id_fk": 0
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "Idowu Sonanya",
       "nationality":"Nigerian, Born 1970",
       "title": "LEGEND ( PROF G. GRILLO )",
@@ -37,6 +37,56 @@
       "medium":"Metal",
       "size": "36\"x24\"",
       "filename":"legend",
-      "artist_id_fk": 1    }
+      "artist_id_fk": 0    },
+    {
+      "id": 2,
+      "name": "Desmond Dubre",
+      "nationality":"Nigerian, Born 1970",
+      "title": "GIDIGBO",
+      "year": "2019",
+      "medium":"Oil on Canvas",
+      "size": "48\"x36\"",
+      "filename":"gidigbo",
+      "artist_id_fk": 1    },
+    {
+      "id": 3,
+      "name": "Desmond Dubre",
+      "nationality":"Nigerian, Born 1970",
+      "title": "PANDEMIC PANDEMONIUM",
+      "year": "2019",
+      "medium":"Mixed Media",
+      "size": "48\"x36\"",
+      "filename":"pandemic",
+      "artist_id_fk": 1    },
+    {
+      "id": 4,
+      "name": "Norbert Okpu",
+      "nationality":"Nigerian, Born 1970",
+      "title": "Dwellers",
+      "year": "2019",
+      "medium":"Acrylic on Board",
+      "size": "36\"x34\"",
+      "filename":"dwellers",
+      "artist_id_fk": 2    },
+    {
+      "id": 5,
+      "name": "Norbert Okpu",
+      "nationality":"Nigerian, Born 1970",
+      "title": "SELF PORTRAIT",
+      "year": "2019",
+      "medium":"Mixed Media",
+      "size": "36\"x36\"",
+      "filename":"selfnorbert",
+      "artist_id_fk": 2    },      
+    {
+      "id": 6,
+      "name": "Sylvester Abiogun",
+      "nationality":"Nigerian, Born 1972",
+      "title": "LEGEND ( PROF G. GRILLO )",
+      "year": "2020",
+      "medium":"Oil on Canvas",
+      "size": "36\"x36\"",
+      "filename":"asoebi",
+      "artist_id_fk": 3    }      
   ]  
 }

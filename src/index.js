@@ -14,11 +14,12 @@ const images = [
   { position: [-1.75, 0, 0.25], rotation: [0, Math.PI / 2.5, 0], url: pexel('asoebi') },
   { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: pexel('confluence') },
   { position: [-2, 0, 2.75], rotation: [0, Math.PI / 2.5, 0], url: pexel('hope') },
+  //{ position: [-2.4, 0, 4], rotation: [0, Math.PI / 2.5, 0], url: pexel('violinbabe1') },
   // Right
   { position: [1.75, 0, 0.25], rotation: [0, -Math.PI / 2.5, 0], url: pexel('harvest') },
   { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: pexel('lagos') },
   { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: pexel('nature') },
-  { position: [1.75, 0, 4], rotation: [0, -Math.PI / 2.5, 0], url: pexel('legend') }
+  //{ position: [2.4, 0, 4], rotation: [0, -Math.PI / 2.5, 0], url: pexel('violinbabe2') }
 ]
 
 createRoot(document.getElementById('root')).render(
