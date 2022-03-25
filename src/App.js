@@ -74,45 +74,39 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
   })
   const pexel = (filename) => `http://localhost:5000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
   // if (artworks.length % 2){ // odd
-    artworks.map( (art,index) => {
-      art.url=pexel(art.filename)
-      switch (index){
-        case 0:
-          art.rotation=[0, 0, 0]
-          art.position=[0, 0, 1.5]
-          break;
-        case (index <= 2): 
-          art.rotation=[0, 0, 0]
-          art.position=((index%2) ? [-0.8, 0, -0.6]:[0.8, 0, -0.6]);
-          break;
-        default:
-          if (index % 2){
-            art.rotation=[0, Math.PI / 2.5, 0]
-            const multiplier = (((index+1)/2 % 2) ? 0.0375 : .1);
-            art.position=[-1.75+(index-2)*multiplier, 0, 0.25]
-          }else{
-            art.rotation=[0, -Math.PI / 2.5, 0]
-            const multiplier = (((index)/2 % 2) ? 0.0375 : .1);
-            art.position=[1.75+(index-2)*multiplier, 0, 0.25]
-          }
-          break;
+  artworks.map( (art,index) => {
+    art.url=pexel(art.filename)
+    switch (true){
+      case (index==0):
+        art.rotation=[0, 0, 0]
+        art.position=[0, 0, 1.5]
+        break;
+      case (index<=2): 
+        art.rotation=[0, 0, 0]
+        art.position=((index%2) ? [-0.8, 0, -0.6]:[0.8, 0, -0.6]);
+        break;
+      default:
+        if (index % 2){
+          art.rotation=[0, Math.PI / 2.5, 0]
+          const multiplier = (((index+1)/2 % 2) ? 0.0375 : .1);
+          art.position=[-1.75+(index-2)*multiplier, 0, 0.25]
+        }else{
+          art.rotation=[0, -Math.PI / 2.5, 0]
+          const multiplier = (((index)/2 % 2) ? 0.0375 : .1);
+          art.position=[1.75+(index-2)*multiplier, 0, 0.25]
         }
-    })
-    const artprops = artworks.map( (art) => (
-      {
-          position:art.position,
-          rotation:art.rotation,
-          url:art.url
-        
-      }) )
-  // }else{ // even
-
-  // }
-  console.debug(typeof artworks[0],artworks[0])
-  console.debug(typeof artprops[0],artprops[0])
-  console.debug(typeof images[0],images[0])
+        break;
+      }
+  })
+  const artprops = artworks.map( (art) => (
+    {
+        position:art.position,
+        rotation:art.rotation,
+        url:art.url
+      
+    }) )
   
-  var keys = ["position", "rotation", "url"];
+  console.debug(artprops)
 
 
   return (
@@ -139,9 +133,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, 0.9 * (hovered ? 0.905 : 1), 0.1)
     frame.current.material.color.lerp(c.set(hovered ? 'orange' : 'white').convertSRGBToLinear(), 0.1)
   })
-  // console.log(props)
-  // console.log(url)
-  // console.log(c)
+  
   return (
     <group {...props}>
       <mesh
