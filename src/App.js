@@ -74,10 +74,15 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
   })
   const pexel = (filename) => `http://localhost:5000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
   // if (artworks.length % 2){ // odd
+  const desckeys = [ "name",  "nationality",  "title",  "year",  "medium",  "size" ]
   artworks.map( (art,index) => {
+    art.desc = desckeys.reduce(function(obj, key) {
+      if (art.hasOwnProperty(key)) obj[key] = art[key];
+      return obj;
+  }, {});     
     art.url=pexel(art.filename)
     switch (true){
-      case (index==0):  // center
+      case (index===0):  // center
         art.rotation=[0, 0, 0]
         art.position=[0, 0, 1.5]
         break;
@@ -100,19 +105,16 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
         break;
       }
   })
-  const desckeys = [ "name",  "nationality",  "title",  "year",  "medium",  "size" ]
+  
   const artprops = artworks.map( (art) => (
     {
         position:art.position,
         rotation:art.rotation,
         url:art.url,
-        desc:art.name+art.nationality
+        desc:Object.values(art.desc).join(' ')
       
     }) )
   
-  // console.debug(artprops)
-
-
   return (
     <group
       ref={ref}
@@ -129,6 +131,8 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
   const image = useRef()
   const frame = useRef()
   const name = getUuid(url)
+  const desc = props.desc
+  
   // const name = [props.name,props.nationality,props.title,props.year,props.medium,props.size].join(' ')
   useCursor(hovered)
   useFrame((state) => {
@@ -137,7 +141,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, 0.9 * (hovered ? 0.905 : 1), 0.1)
     frame.current.material.color.lerp(c.set(hovered ? 'orange' : 'white').convertSRGBToLinear(), 0.1)
   })
-  console.log(props.desc)
+  
   return (
     <group {...props}>
       <mesh
@@ -155,13 +159,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
         <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={url} />
       </mesh>
       <Text maxWidth={0.1} anchorX="left" anchorY="top" position={[0.55, GOLDENRATIO, 0]} fontSize={0.025}>
-        { /* Name  */'Idowu Sonanya\n'}
-        { /* Nationality / DOB */ '(Nigerian, Born 1970)\n'}
-        { /* Title */ 'ELEKO BEACH\n'}
-        { /* Year */ '2021\n'}
-        { /* Medium */ 'Acrylic on Canvas\n'}
-        { /* Size */ '48"x24"'}
-        { /* {name.split('-').join(' ')} */ }
+        { desc }
       </Text>
     </group>
   )
