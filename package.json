@@ -3,19 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/drei": "8.10.3",
+    "@react-three/fiber": "8.0.0-beta-04",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "json-server": "^0.17.0",
+    "react": "^18.0.0-rc.3",
+    "react-dom": "^18.0.0-rc.3",
     "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
+    "three": "0.137.5",
+    "uuid-by-string": "3.0.5",
+    "web-vitals": "^2.1.4",
+    "wouter": "2.8.0-alpha.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
     "extends": [
