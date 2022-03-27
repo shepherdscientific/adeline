@@ -72,15 +72,20 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
     state.camera.position.lerp(p, 0.025)
     state.camera.quaternion.slerp(q, 0.025)
   })
-  const pexel = (filename) => `http://localhost:5000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
-  // if (artworks.length % 2){ // odd
-  const desckeys = [ "name",  "nationality",  "title",  "year",  "medium",  "size" ]
+
+  const filepath = (filename) => `http://localhost:5000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
+  // if (artworks.length % 2){ // are there an even or odd # of artworks
+  // keys to incldude in description
+  const desckeys = [ "name",  "nationality",  "title",  "year",  "medium",  "size" ] 
   artworks.map( (art,index) => {
-    art.desc = desckeys.reduce(function(obj, key) {
-      if (art.hasOwnProperty(key)) obj[key] = art[key];
-      return obj;
-  }, {});     
-    art.url=pexel(art.filename)
+    // create description string from key list 
+    art.desc = desckeys.reduce(function(obj, key) { 
+        if (art.hasOwnProperty(key)) obj[key] = art[key];
+        return obj;
+    }, {});
+    // get url 
+    art.url=filepath(art.filename)
+    // arrange artworks
     switch (true){
       case (index===0):  // center
         art.rotation=[0, 0, 0]
