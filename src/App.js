@@ -8,22 +8,24 @@ import getUuid from 'uuid-by-string'
 const GOLDENRATIO = 1.61803398875
 
 export default function App({ images }) {
-  const [artworks,setArtworks] = useState([])
-  useEffect(() => {
-    const getArtworks = async () => {
-      const artworksFromServer = await fetchArtworks()
-      setArtworks(artworksFromServer)
-    }
+  // const [artworks,setArtworks] = useState([])
+  // useEffect(() => {
+  //   const getArtworks = async () => {
+  //     const artworksFromServer = await fetchArtworks()
+  //     setArtworks(artworksFromServer)
+  //   }
 
-    getArtworks()
-  }, [])
+  //   getArtworks()
+  // }, [])
 
-  // Fetch Tasks
-  const fetchArtworks = async () => {
-    const res = await fetch('http://localhost:5000/artworks')
-    const data = await res.json()
-    return data
-  }
+  // // Fetch Tasks
+  // const fetchArtworks = async () => {
+  //   const res = await fetch('http://localhost:4000/artworks')
+  //   console.log(res)
+  //   const data = await res.json()
+  //   console.log(data)
+  //   return data
+  // }
 
   return (
     <Canvas gl={{ alpha: false }} dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
@@ -31,7 +33,7 @@ export default function App({ images }) {
       <fog attach="fog" args={['#191920', 0, 15]} />
       <Environment preset="city" />
       <group position={[0, -0.5, 0]}>
-        <Frames images={images} artworks={artworks} />
+        <Frames images={images} artworks={images} />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
@@ -73,7 +75,7 @@ function Frames({ images, artworks, q = new THREE.Quaternion(), p = new THREE.Ve
     state.camera.quaternion.slerp(q, 0.025)
   })
 
-  const filepath = (filename) => `http://localhost:5000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
+  const filepath = (filename) => `http://localhost:3000/assets/images/${filename}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
   // if (artworks.length % 2){ // are there an even or odd # of artworks
   // keys to incldude in description
   const desckeys = [ "name",  "nationality",  "title",  "year",  "medium",  "size" ] 
